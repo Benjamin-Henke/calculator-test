@@ -1,4 +1,5 @@
-let operation;
+let isRomanNumeralMode = false;
+let selectedOperation;
 
 const romanNumerals = {
     1: "I",
@@ -12,6 +13,11 @@ const romanNumerals = {
     9: "IX",
     10: "X"
 };
+
+document.getElementById("roman-toggle").addEventListener("change", (event) => {
+  isRomanNumeralMode = event.target.checked;
+  updateMode();
+});
 
 document.getElementById("firstNumberInput").addEventListener("input", function () {
     let text = document.getElementById("firstNumberInput").value;
@@ -29,9 +35,8 @@ document.getElementById("multiply").addEventListener("change", handleOperation);
 document.getElementById("divide").addEventListener("change", handleOperation);
 
 function handleOperation() {
-    operation = document.querySelector('input[name="operation"]:checked').value;
-    console.log(operation)
-    switch(operation) {
+    selectedOperation = document.querySelector('input[name="operation"]:checked').value;
+    switch(selectedOperation) {
         case "add":
             document.getElementById("operation").innerHTML = "+";
             break;
@@ -49,25 +54,25 @@ function handleOperation() {
 
 
 function calculate() {
-    let firstNumber = parseInt(document.getElementById("firstNumberInput").value);
-    let secondNumber = parseInt(document.getElementById("secondNumberInput").value);
-    operation = document.querySelector('input[name="operation"]:checked').value;
+    let numbOne = parseInt(document.getElementById("firstNumberInput").value);
+    let numbTwo = parseInt(document.getElementById("secondNumberInput").value);
+    selectedOperation = document.querySelector('input[name="operation"]:checked').value;
 
     let result;
 
-    switch(operation) {
+    switch(selectedOperation) {
         case "add":
             console.log("Adding", firstNumber, secondNumber);
-            result = firstNumber + secondNumber;
+            result = numbOne + numbTwo;
             break;
         case "subtract":
-            result = firstNumber - secondNumber;
+            result = numbOne - numbTwo;
             break;
         case "multiply":
-            result = firstNumber * secondNumber;
+            result = numbOne * numbTwo;
             break;
         case "divide":
-            result = firstNumber / secondNumber;
+            result = numbOne / numbTwo;
             break;
     }
     console.log(result);
@@ -82,4 +87,13 @@ function clearFields() {
     document.getElementById("secondNumber").innerHTML = "";
     document.getElementById("operation").innerHTML = "";
     document.getElementById("result").innerHTML = "";
+};
+
+function updateMode() {
+
+  if (isRomanNumeralMode) {
+    document.getElementById("mode").textContent = "Roman Numeral Mode"
+  } else {
+    document.getElementById("mode").textContent = "Standard Mode"
+  }
 };
