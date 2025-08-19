@@ -1,23 +1,25 @@
 let isRomanNumeralMode = false;
-let selectedOperation;
+let selectedOperation = null;
 
-const romanNumerals = {
-    1: "I",
-    2: "II",
-    3: "III",
-    4: "IV",
-    5: "V",
-    6: "VI",
-    7: "VII",
-    8: "VIII",
-    9: "IX",
-    10: "X"
-};
+const romanNumerals = [
+  "I", "V", "X", "L", "C", "D", "M"
+];
+
+// I: 1
+// V: 5
+// X: 10
+// L: 50
+// C: 100
+// D: 500
+// M: 1000
 
 document.getElementById("roman-toggle").addEventListener("change", (event) => {
   isRomanNumeralMode = event.target.checked;
   updateMode();
 });
+
+document.getElementById("firstNumberInput").addEventListener("input", validateInputs);
+document.getElementById("secondNumberInput").addEventListener("input", validateInputs);
 
 document.getElementById("firstNumberInput").addEventListener("input", function () {
     let text = document.getElementById("firstNumberInput").value;
@@ -33,6 +35,15 @@ document.getElementById("add").addEventListener("change", handleOperation);
 document.getElementById("subtract").addEventListener("change", handleOperation);
 document.getElementById("multiply").addEventListener("change", handleOperation);
 document.getElementById("divide").addEventListener("change", handleOperation);
+
+function validateInputs(event) {
+  if (isRomanNumeralMode) {
+    const pattern = new RegExp(`[^${romanNumerals.join("")}]`, "g");
+    event.target.value = event.target.value.toUpperCase().replace(pattern, "");
+  } else {
+    event.target.value = event.target.value.replace(/[^0-9.-]/g, '');
+  }
+};
 
 function handleOperation() {
     selectedOperation = document.querySelector('input[name="operation"]:checked').value;
@@ -54,30 +65,38 @@ function handleOperation() {
 
 
 function calculate() {
-    let numbOne = parseInt(document.getElementById("firstNumberInput").value);
-    let numbTwo = parseInt(document.getElementById("secondNumberInput").value);
-    selectedOperation = document.querySelector('input[name="operation"]:checked').value;
+  let numbOne = parseInt(document.getElementById("firstNumberInput").value);
+  let numbTwo = parseInt(document.getElementById("secondNumberInput").value);
 
-    let result;
+  if (!numbOne || !numbTwo) {
+    throw new Error("Please enter both numbers");
+  }
 
-    switch(selectedOperation) {
-        case "add":
-            console.log("Adding", firstNumber, secondNumber);
-            result = numbOne + numbTwo;
-            break;
-        case "subtract":
-            result = numbOne - numbTwo;
-            break;
-        case "multiply":
-            result = numbOne * numbTwo;
-            break;
-        case "divide":
-            result = numbOne / numbTwo;
-            break;
-    }
-    console.log(result);
+  if (!selectedOperation) {
+    throw new Error("Select an operation");
+  };
 
-    document.getElementById("result").innerHTML = result;
+  let result;
+  selectedOperation = document.querySelector('input[name="operation"]:checked').value;
+
+  switch(selectedOperation) {
+      case "add":
+          console.log("Adding", firstNumber, secondNumber);
+          result = numbOne + numbTwo;
+          break;
+      case "subtract":
+          result = numbOne - numbTwo;
+          break;
+      case "multiply":
+          result = numbOne * numbTwo;
+          break;
+      case "divide":
+          result = numbOne / numbTwo;
+          break;
+  }
+  console.log(result);
+
+  document.getElementById("result").innerHTML = result;
 };
 
 function clearFields() {
@@ -90,7 +109,6 @@ function clearFields() {
 };
 
 function updateMode() {
-
   if (isRomanNumeralMode) {
     document.getElementById("mode").textContent = "Roman Numeral Mode"
   } else {
