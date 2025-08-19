@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="calculator.js" defer></script>
+        <link rel="stylesheet" href="style.css">
+        <title>Calculator Test</title>
+    </head>
+    <body>
+        <h1>Calculator Test</h1>
+        <div>
+            <button type="button" id="toggleMode">Toggle Standard / Roman Numeral</button>
+        </div>
+
+        <form class="calculator">
+            <div>
+                <input id="firstNumberInput" type="number" placeholder="First Number" />
+                <input id="secondNumberInput" type="number" placeholder="Second Number" />
+            </div>
+
+            <div id="operations">
+                <input id="add" type="radio" name="operation" value="add" /> Add
+                <input id="subtract" type="radio" name="operation" value="subtract" /> Subtract
+                <input id="multiply" type="radio" name="operation" value="multiply" /> Multiply
+                <input id="divide" type="radio" name="operation" value="divide" /> Divide
+            </div>
+
+            <div class="buttons">
+                <button type="button" id="equals" onclick="calculate()">=</button>
+                <button type="reset" id="clear" onclick="clearFields()">Clear</button>
+            </div>
+
+        </form>
+        <div id="summary">
+            <p id="firstNumber"></p>
+            <p id="operation"></p>
+            <p id="secondNumber"></p>
+        </div>
+
+        <div>
+            <p id="result"></p>
+        </div>
+        </body>
+    </html> 
