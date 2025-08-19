@@ -2,6 +2,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: linear-gradient(90deg, #1A162F 0%, #22125F 50%, #1A162F 100%);
+    color: aliceblue;
 }
 
 .calculator {
