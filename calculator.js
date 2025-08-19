@@ -4,14 +4,7 @@ let selectedOperation = null;
 const romanNumerals = [
   "I", "V", "X", "L", "C", "D", "M"
 ];
-
-// I: 1
-// V: 5
-// X: 10
-// L: 50
-// C: 100
-// D: 500
-// M: 1000
+// I: 1 V: 5 X: 10 L: 50 C: 100 D: 500 M: 1000
 
 document.getElementById("roman-toggle").addEventListener("change", (event) => {
   isRomanNumeralMode = event.target.checked;
@@ -45,6 +38,15 @@ function validateInputs(event) {
   }
 };
 
+function validateRomanNumeral(input) {
+  const pattern = /^M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$/;
+  pattern.test(input.toUpperCase());
+};
+
+function convertRomanNumerals() {
+
+};
+
 function handleOperation() {
     selectedOperation = document.querySelector('input[name="operation"]:checked').value;
     switch(selectedOperation) {
@@ -63,12 +65,11 @@ function handleOperation() {
     }
 };
 
-
 function calculate() {
-  let numbOne = parseInt(document.getElementById("firstNumberInput").value);
-  let numbTwo = parseInt(document.getElementById("secondNumberInput").value);
+  let numbOneInput = document.getElementById("firstNumberInput").value;
+  let numbTwoInput = document.getElementById("secondNumberInput").value;
 
-  if (!numbOne || !numbTwo) {
+  if (!numbOneInput || !numbTwoInput) {
     throw new Error("Please enter both numbers");
   }
 
@@ -76,12 +77,23 @@ function calculate() {
     throw new Error("Select an operation");
   };
 
-  let result;
   selectedOperation = document.querySelector('input[name="operation"]:checked').value;
 
+  let numbOne;
+  let numbTwo;
+
+  if (isRomanNumeralMode) {
+    if (!validateInputs(numbOne) || !validateInputs(numbTwo)) {
+      throw new Error("Invalid Roman Numeral");
+    }
+  } else {
+    numbOne = parseInt(numbOneInput);
+    numbTwo = parseInt(numbTwoInput);
+  }
+
+  let result;
   switch(selectedOperation) {
       case "add":
-          console.log("Adding", firstNumber, secondNumber);
           result = numbOne + numbTwo;
           break;
       case "subtract":
@@ -93,9 +105,9 @@ function calculate() {
       case "divide":
           result = numbOne / numbTwo;
           break;
-  }
-  console.log(result);
+  };
 
+  // if roman numeral mode, go back to roman numeral
   document.getElementById("result").innerHTML = result;
 };
 
