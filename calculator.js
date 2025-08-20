@@ -135,7 +135,6 @@ function calculate() {
 
     numbOne = convertRomanToInt(numbOneInput);
     numbTwo = convertRomanToInt(numbTwoInput);
-    console.log(`number one: ${numbOne} | number two: ${numbTwo}`)
 
   } else {
     numbOne = parseInt(numbOneInput);
@@ -158,6 +157,8 @@ function calculate() {
           break;
   };
 
+  console.log(result)
+
   if (isRomanNumeralMode) {
     if (result <= 0 || result > 3999 || !Number.isInteger(result)) {
         throw new Error('Result must be a positive integer between 1 and 3999 for Roman numerals');
@@ -175,6 +176,9 @@ function clearFields() {
     document.getElementById("secondNumber").innerHTML = "";
     document.getElementById("operation").innerHTML = "";
     document.getElementById("result").innerHTML = 0;
+    document.querySelectorAll(".operation-button").forEach(button => {
+      button.classList.remove("active");
+    });
 };
 
 function updateMode() {
