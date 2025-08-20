@@ -1,57 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" href="style.css">
-      <title>Calculator Test</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Calculator Test</title>
   </head>
   <body>
+    <div class="calculator-container">
       <h1>Calculator Test</h1>
+
       <div class="toggle">
         <label class="switch">
-          <input type="checkbox" id="roman-toggle"">
+          <input type="checkbox" id="roman-toggle">
           <span class="slider round"></span>
         </label>
-        <label>Roman Numeral Mode</label>
+        <label>Roman Numeral</label>
       </div>
 
       <div>
-        <span
-          class="mode"
-          id="mode"
-        >
-          Standard Mode:
-        </span>
-        <span class="help-text" id="helpText">Numbers (1-3999)</span>
+        <span class="mode" id="mode">Standard:</span>
+        <span class="help-text" id="helpText">(1-3999)</span>
       </div>
 
       <form class="calculator">
-          <div class="inputs">
-              <input id="firstNumberInput" placeholder="First Number" />
-              <input id="secondNumberInput" placeholder="Second Number" />
-          </div>
+        <div class="inputs">
+          <input id="firstNumberInput" placeholder="First Number" />
+          <input id="secondNumberInput" placeholder="Second Number" />
+        </div>
 
-          <div id="operations">
-            <button type="button" id="add" value="add">Add</button>
-            <button type="button" id="subtract" value="subtract">Subtract</button>
-            <button type="button" id="multiply" value="multiply">Multiply</button>
-            <button type="button" id="divide" value="divide">Divide</button>
-          </div>
+        <div id="operations">
+          <button type="button" id="add" value="add">Add</button>
+          <button type="button" id="subtract" value="subtract">Subtract</button>
+          <button type="button" id="multiply" value="multiply">Multiply</button>
+          <button type="button" id="divide" value="divide">Divide</button>
+        </div>
 
-          <div class="buttons">
-              <button type="button" id="equals" onclick="calculate()">=</button>
-              <button type="reset" id="clear" onclick="clearFields()">Clear</button>
-          </div>
+        <div class="buttons">
+          <button type="button" id="equals" onclick="calculate()">=</button>
+          <button type="reset" id="clear" onclick="clearFields()">Clear</button>
+        </div>
       </form>
+
       <div id="summary">
-          <p id="firstNumber"></p>
-          <p id="operation"></p>
-          <p id="secondNumber"></p>
+        <p id="firstNumber"></p>
+        <p id="operation"></p>
+        <p id="secondNumber"></p>
       </div>
 
       <div id="result"></div>
+    </div>
 
-      <script src="calculator.js" defer></script>
-    </body>
+    <script src="calculator.js" defer></script>
+  </body>
 </html>

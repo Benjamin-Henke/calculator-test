@@ -172,10 +172,10 @@ function updateMode() {
   const helpText = document.getElementById("helpText");
 
   if (isRomanNumeralMode) {
-    modeText.textContent = "Roman Numeral Mode: ";
-    helpText.textContent = "Roman Numerals (I, V, X, L, C, D, M)";
+    modeText.textContent = "Roman Numeral: ";
+    helpText.textContent = "(I, V, X, L, C, D, M)";
   } else {
-    modeText.textContent = "Standard Mode: ";
-    helpText.textContent = "Numbers (1-3999)";
+    modeText.textContent = "Standard: ";
+    helpText.textContent = "(1-3999)";
   }
 };

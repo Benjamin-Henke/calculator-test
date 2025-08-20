@@ -1,8 +1,18 @@
 body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: midnightblue;
+}
+
+.calculator-container {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  border-radius: 1rem;
+  padding: 1rem;
 }
 
 .calculator {
@@ -11,12 +21,32 @@ body {
     align-items: center;
 }
 
-.calculator input {
+.calculator {
     margin: 5px;
 }
 
 .calculator button {
     margin: 5px;
+}
+
+.inputs input {
+  display: inherit;
+  flex-direction: column;
+  border-radius: 0.5rem;
+  width: 100%;
+  padding: 10px;
+
+  border: 1px solid #ddd;
+  border-radius: 10px;
+
+  margin: 5px;
+
+  transition: border-color 0.3s;
+}
+
+.inputs input:focus {
+  outline: none;
+  border-color: rebeccapurple;
 }
 
 .buttons {
@@ -53,7 +83,6 @@ input[type=number]::-webkit-inner-spin-button {
 
 
 
-/*Toggle style below*/
 .toggle {
   display: flex;
   flex-direction: row;
