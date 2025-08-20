@@ -189,7 +189,7 @@ function updateMode() {
     modeText.textContent = "Roman Numeral: ";
     helpText.textContent = "I, V, X, L, C, D, M";
   } else {
-    modeText.textContent = "Standard: ";
-    helpText.textContent = "1-3999";
+    modeText.textContent = "Standard";
+    helpText.textContent = "";
   }
 };

@@ -42,6 +42,7 @@ button:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
 }
 
 .calculator {
@@ -56,6 +57,27 @@ button:hover {
   padding: 10px;
   min-width: 250px;
   text-align: center;
+}
+
+.summary-container {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    width: 80%;
+    padding: 5px;
+    height: 2rem;
+}
+
+.result {
+  font-weight: 200;
+  font-size: 1.5rem;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 
 .inputs {
@@ -95,36 +117,12 @@ button:hover {
     margin-top: 10px;
 }
 
-.summary-container {
-    margin-top: 15px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 0.25rem;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    width: 100%;
-    padding: 5px;
-    height: 2rem;
-}
-
-.result {
-  font-weight: 200;
-  font-size: 1.5rem;
-  padding-top: 15px;
-  padding-bottom: 15px;
-}
 
 input[type=number]::-webkit-outer-spin-button,
 input[type=number]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
-
-
-
 
 .toggle {
   display: flex;
