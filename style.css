@@ -5,14 +5,37 @@ body {
   background-color: midnightblue;
 }
 
+button {
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: white;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 100;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button:hover {
+  background-color: lightblue;
+}
+
+.operation-button.active {
+  background-color: lightcoral;
+  border-color: lightcoral;
+}
+
 .calculator-container {
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.25rem;
+  gap: 1rem;
   border-radius: 1rem;
-  padding: 1rem;
+  padding: 3rem;
 }
 
 .calculator {
@@ -29,19 +52,27 @@ body {
     margin: 5px;
 }
 
-.inputs input {
-  display: inherit;
-  flex-direction: column;
-  border-radius: 0.5rem;
-  width: 100%;
+.mode-info {
   padding: 10px;
+  min-width: 250px;
+  text-align: center;
+}
 
-  border: 1px solid #ddd;
+.inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.inputs input {
+  font-size: 1rem;
+  padding: 12px;
   border-radius: 10px;
-
-  margin: 5px;
-
-  transition: border-color 0.3s;
+  border: 1px solid #ddd;
+  margin: 8px 0;
 }
 
 .inputs input:focus {
@@ -49,19 +80,40 @@ body {
   border-color: rebeccapurple;
 }
 
-.buttons {
+.operation-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  gap: 2px;
+  margin-top: 1rem;
+}
+
+.action-buttons {
     display: flex;
     justify-content: center;
     flex-direction: row;
     margin-top: 10px;
 }
 
-#summary {
-    margin-top: 20px;
+.summary-container {
+    margin-top: 15px;
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
     gap: 0.25rem;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    width: 100%;
+    padding: 5px;
+    height: 2rem;
+}
+
+.result {
+  font-weight: 200;
+  font-size: 1.5rem;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 
 input[type=number]::-webkit-outer-spin-button,
@@ -69,15 +121,6 @@ input[type=number]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
-
-
-
-
-
-
-
-
 
 
 

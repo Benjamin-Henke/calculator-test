@@ -18,10 +18,18 @@
         <label>Roman Numeral</label>
       </div>
 
-      <div>
+      <div class="mode-info">
         <span class="mode" id="mode">Standard:</span>
-        <span class="help-text" id="helpText">(1-3999)</span>
+        <span class="help-text" id="helpText">1-3999</span>
       </div>
+
+      <div class="summary-container" id="summary">
+        <span id="firstNumber"></span>
+        <span id="operation"></span>
+        <span id="secondNumber"></span>
+      </div>
+
+      <div class="result" id="result">0</div>
 
       <form class="calculator">
         <div class="inputs">
@@ -29,26 +37,18 @@
           <input id="secondNumberInput" placeholder="Second Number" />
         </div>
 
-        <div id="operations">
-          <button type="button" id="add" value="add">Add</button>
-          <button type="button" id="subtract" value="subtract">Subtract</button>
-          <button type="button" id="multiply" value="multiply">Multiply</button>
-          <button type="button" id="divide" value="divide">Divide</button>
+        <div class="operation-container" id="operations">
+          <button type="button" class="operation-button" id="add" value="add">Add</button>
+          <button type="button" class="operation-button" id="subtract" value="subtract">Subtract</button>
+          <button type="button" class="operation-button" id="multiply" value="multiply">Multiply</button>
+          <button type="button" class="operation-button" id="divide" value="divide">Divide</button>
         </div>
 
-        <div class="buttons">
+        <div class="action-buttons">
           <button type="button" id="equals" onclick="calculate()">=</button>
           <button type="reset" id="clear" onclick="clearFields()">Clear</button>
         </div>
       </form>
-
-      <div id="summary">
-        <p id="firstNumber"></p>
-        <p id="operation"></p>
-        <p id="secondNumber"></p>
-      </div>
-
-      <div id="result"></div>
     </div>
 
     <script src="calculator.js" defer></script>

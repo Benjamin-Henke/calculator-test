@@ -23,10 +23,13 @@ document.getElementById("secondNumberInput").addEventListener("input", function 
     document.getElementById("secondNumber").innerHTML = text;
 });
 
-document.getElementById("add").addEventListener("click", handleOperation);
-document.getElementById("subtract").addEventListener("click", handleOperation);
-document.getElementById("multiply").addEventListener("click", handleOperation);
-document.getElementById("divide").addEventListener("click", handleOperation);
+document.querySelectorAll(".operation-button").forEach(button => {
+  button.addEventListener("click", handleOperation);
+});
+// document.getElementById("add").addEventListener("click", handleOperation);
+// document.getElementById("subtract").addEventListener("click", handleOperation);
+// document.getElementById("multiply").addEventListener("click", handleOperation);
+// document.getElementById("divide").addEventListener("click", handleOperation);
 
 function validateInputs(event) {
   if (isRomanNumeralMode) {
@@ -84,20 +87,27 @@ function convertIntToRoman(number) {
 
 function handleOperation(event) {
   selectedOperation = event.target.value;
+
     switch(selectedOperation) {
-        case "add":
-            document.getElementById("operation").innerHTML = "+";
-            break;
-        case "subtract":
-            document.getElementById("operation").innerHTML = "-";
-            break;
-        case "multiply":
-            document.getElementById("operation").innerHTML = "*";
-            break;
-        case "divide":
-            document.getElementById("operation").innerHTML = "/";
-            break;
-    }
+      case "add":
+          document.getElementById("operation").innerHTML = "+";
+          break;
+      case "subtract":
+          document.getElementById("operation").innerHTML = "-";
+          break;
+      case "multiply":
+          document.getElementById("operation").innerHTML = "*";
+          break;
+      case "divide":
+          document.getElementById("operation").innerHTML = "/";
+          break;
+  };
+
+  document.querySelectorAll(".operation-button").forEach(button => {
+    button.classList.remove("active");
+  });
+
+  event.target.classList.add("active");
 };
 
 function calculate() {
@@ -164,7 +174,7 @@ function clearFields() {
     document.getElementById("firstNumber").innerHTML = "";
     document.getElementById("secondNumber").innerHTML = "";
     document.getElementById("operation").innerHTML = "";
-    document.getElementById("result").innerHTML = "";
+    document.getElementById("result").innerHTML = 0;
 };
 
 function updateMode() {
@@ -173,9 +183,9 @@ function updateMode() {
 
   if (isRomanNumeralMode) {
     modeText.textContent = "Roman Numeral: ";
-    helpText.textContent = "(I, V, X, L, C, D, M)";
+    helpText.textContent = "I, V, X, L, C, D, M";
   } else {
     modeText.textContent = "Standard: ";
-    helpText.textContent = "(1-3999)";
+    helpText.textContent = "1-3999";
   }
 };
