@@ -26,10 +26,12 @@ document.getElementById("secondNumberInput").addEventListener("input", function 
 document.querySelectorAll(".operation-button").forEach(button => {
   button.addEventListener("click", handleOperation);
 });
-// document.getElementById("add").addEventListener("click", handleOperation);
-// document.getElementById("subtract").addEventListener("click", handleOperation);
-// document.getElementById("multiply").addEventListener("click", handleOperation);
-// document.getElementById("divide").addEventListener("click", handleOperation);
+
+document.addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+        calculate();
+    }
+});
 
 function validateInputs(event) {
   if (isRomanNumeralMode) {
@@ -113,8 +115,6 @@ function handleOperation(event) {
 function calculate() {
   let numbOneInput = document.getElementById("firstNumberInput").value;
   let numbTwoInput = document.getElementById("secondNumberInput").value;
-
-  console.log(`number one input: ${numbOneInput} | number two input: ${numbTwoInput}`);
 
   if (!numbOneInput || !numbTwoInput) {
     throw new Error("Please enter both numbers");
