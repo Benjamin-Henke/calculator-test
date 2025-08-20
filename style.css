@@ -80,6 +80,10 @@ button:hover {
   padding-bottom: 15px;
 }
 
+.error-message {
+  color: red;
+}
+
 .inputs {
   display: flex;
   flex-direction: column;

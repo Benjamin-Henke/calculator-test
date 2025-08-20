@@ -121,6 +121,7 @@ function calculate() {
   }
 
   if (!selectedOperation) {
+    document.getElementById("error-message").innerText = "Select an operation";
     throw new Error("Select an operation");
   };
 
@@ -130,6 +131,7 @@ function calculate() {
 
   if (isRomanNumeralMode) {
     if (!validateRomanNumeral(numbOneInput) || !validateRomanNumeral(numbTwoInput)) {
+      document.getElementById("error-message").innerText = "Invalid Roman Numeral";
       throw new Error("Invalid Roman Numeral");
     };
 
@@ -161,10 +163,13 @@ function calculate() {
 
   if (isRomanNumeralMode) {
     if (result <= 0 || result > 3999 || !Number.isInteger(result)) {
-        throw new Error('Result must be a positive integer between 1 and 3999 for Roman numerals');
+      document.getElementById("error-message").textContent = "Result must be 1-3999 for Roman numerals";
+      throw new Error('Result must be a positive integer between 1 and 3999 for Roman numerals');
     }
+    document.getElementById("error-message").innerText = "";
     document.getElementById("result").textContent = convertIntToRoman(Math.round(result));
   } else {
+    document.getElementById("error-message").innerText = "";
     document.getElementById("result").textContent = Number.isInteger(result) ? result : result.toFixed(2);
   }
 };
@@ -179,6 +184,7 @@ function clearFields() {
     document.querySelectorAll(".operation-button").forEach(button => {
       button.classList.remove("active");
     });
+  document.getElementById("error-message").textContent = "";
 };
 
 function updateMode() {
