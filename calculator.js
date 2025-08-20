@@ -65,8 +65,21 @@ function convertRomanToInt(roman) {
   return result;
 };
 
-function convertIntToRoman() {
+function convertIntToRoman(number) {
+  if (number <= 0 || number > 3999) throw new Error("Numbers must be between 1 - 3999");
 
+  const values = [1000, 9000, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
+  const romanSymb = ['M', 'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I'];
+
+  let result = '';
+  for (let i = 0; i < values.length; i++) {
+    while (number >= values[i]) {
+      result += romanSymb[i];
+      number -= values[i];
+    }
+  };
+
+  return result;
 };
 
 function handleOperation(event) {
@@ -101,15 +114,15 @@ function calculate() {
     throw new Error("Select an operation");
   };
 
+
+  let numbOne;
+  let numbTwo;
+
   if (isRomanNumeralMode) {
     if (!validateRomanNumeral(numbOneInput) || !validateRomanNumeral(numbTwoInput)) {
       throw new Error("Invalid Roman Numeral");
     };
 
-    let numbOne;
-    let numbTwo;
-
-    // TODO - working on convertRomanToInt
     numbOne = convertRomanToInt(numbOneInput);
     numbTwo = convertRomanToInt(numbTwoInput);
     console.log(`number one: ${numbOne} | number two: ${numbTwo}`)
@@ -135,8 +148,14 @@ function calculate() {
           break;
   };
 
-  // if roman numeral mode, go back to roman numeral
-  document.getElementById("result").innerHTML = result;
+  if (isRomanNumeralMode) {
+    if (result <= 0 || result > 3999 || !Number.isInteger(result)) {
+        throw new Error('Result must be a positive integer between 1 and 3999 for Roman numerals');
+    }
+    document.getElementById("result").textContent = convertIntToRoman(Math.round(result));
+  } else {
+    document.getElementById("result").textContent = Number.isInteger(result) ? result : result.toFixed(2);
+  }
 };
 
 function clearFields() {
